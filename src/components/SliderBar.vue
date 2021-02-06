@@ -4,6 +4,8 @@
 
 		<span :style="getFillWidth" class="slider-fill bar"></span>
 
+		<input v-model="inputValue" v-on:change="calculatePricing" type="range" :max="maxValue" :min="minValue" />
+
 		<button v-bind:style="getControlPosition" class="slider-control">
 			<svg xmlns="http://www.w3.org/2000/svg" style="transform: translateY(2px)" width="22" height="13">
 				<g fill="#80FFF3" fill-rule="evenodd">
@@ -13,8 +15,6 @@
 				</g>
 			</svg>
 		</button>
-
-		<input v-model="inputValue" v-on:change="calculatePricing" type="range" :max="maxValue" :min="minValue" />
 	</div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 		},
 		maxValue: {
 			type: Number,
-			default: 100,
+			default: 200,
 		},
 		minValue: {
 			type: Number,
@@ -45,18 +45,23 @@ export default {
 		};
 	},
 	methods: {
-		calculatePricing() {
-			console.log(this.inputValue);
+		calculatePricing() {},
+		calcPercentageFor(ruleName) {
+			const currentPosition = this.inputValue;
+
+			const maxValue = this.$props.maxValue;
+
+			const calculatedPosition = (currentPosition * 100) / maxValue;
+
+			return `${ruleName}:${calculatedPosition}%`;
 		},
 	},
 	computed: {
 		getControlPosition() {
-			const currentPosition = this.inputValue;
-			return `left:${currentPosition}%`;
+			return this.calcPercentageFor("left");
 		},
 		getFillWidth() {
-			const currentPosition = this.inputValue;
-			return `width:${currentPosition}%`;
+			return this.calcPercentageFor("width");
 		},
 	},
 };
@@ -124,20 +129,24 @@ input[type="range"] {
 
 .slider-bar-wrapper .slider-fill {
 	z-index: 20;
-	background-color: var(--strong-cyan);
+	background-color: var(--soft-cyan);
 	width: 50%;
 }
 
 .slider-bar-wrapper .slider-control {
-	width: 40px;
-	height: 40px;
+	background-color: var(--soft-cyan);
 	border-radius: 50%;
-	background-color: var(--strong-cyan);
-	z-index: 30;
-	top: 50%;
+	box-shadow: 0 10px 40px var(--soft-cyan);
+	height: 40px;
 	left: 0;
 	position: absolute;
+	top: 50%;
 	transform: translate(-20px, -20px);
-	box-shadow: 0 10px 40px var(--strong-cyan);
+	width: 40px;
+	z-index: 30;
+}
+
+input[type="range"]:active + button {
+	background-color: var(--strong-cyan);
 }
 </style>
