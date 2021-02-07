@@ -9,7 +9,8 @@
 
 	/* Neutral */
 
-	--white: hsl (0, 0%, 100%);
+	--white: hsl(0, 0%, 100%);
+	--bg-pattern: #f1f5fe;
 	--very-pale-blue: hsl(230, 100%, 99%);
 	--light-grayish-blue-1: hsl(224, 65%, 95%);
 	--light-grayish-blue-2: hsl(223, 50%, 87%);
