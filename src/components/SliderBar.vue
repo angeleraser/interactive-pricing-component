@@ -7,7 +7,7 @@
 		<input v-model="inputValue" v-on:change="calculatePricing" type="range" :max="maxValue" :min="minValue" />
 
 		<button v-bind:style="getControlPosition" class="slider-control">
-			<svg xmlns="http://www.w3.org/2000/svg" style="transform: translateY(2px)" width="22" height="13">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="13">
 				<g fill="#80FFF3" fill-rule="evenodd">
 					<path
 						d="M16 2.558v7.884a1 1 0 001.735.679l3.639-3.943a1 1 0 000-1.356l-3.64-3.943A1 1 0 0016 2.558zM6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z"
@@ -76,20 +76,20 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 }
 
 input[type="range"]::-moz-range-thumb {
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 }
 
 input[type="range"]::-ms-thumb {
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	border-radius: 50%;
 }
 
@@ -106,10 +106,10 @@ input[type="range"] {
 }
 
 .slider-bar-wrapper input[type="range"] {
-	width: 100%;
+	width: 110%;
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translate(-15px, -50%);
 	height: 10px;
 	z-index: 80;
 }
