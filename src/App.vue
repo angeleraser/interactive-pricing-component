@@ -1,29 +1,36 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png" />
-
-		<HelloWorld msg="Welcome to Your Vue.js App" />
+		<app-header />
+		<pricing-card :plans="plans" />
 	</div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import AppHeader from "./components/AppHeader.vue";
+import PricingCard from "./components/PricingCard.vue";
+import { plans } from "./fixtures/plans";
 
 export default {
 	name: "App",
 	components: {
-		HelloWorld,
+		AppHeader,
+		PricingCard,
+	},
+	data() {
+		return {
+			plans: plans,
+		};
 	},
 };
 </script>
 
 <style>
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-width: 360px;
+	width: 100%;
 }
 </style>

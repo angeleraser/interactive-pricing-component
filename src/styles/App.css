@@ -1,0 +1,8 @@
+/* Resets and base styles */
+@import "./base/normalize.min.css";
+
+/* Fonts imports */
+@import "./fonts/fonts.css";
+
+/* CSS Variables */
+@import "./settings/vars.css";
