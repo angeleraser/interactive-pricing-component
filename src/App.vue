@@ -1,19 +1,19 @@
 <template>
 	<div id="app">
 		<app-header />
-		<slider-bar />
+		<pricing-card />
 	</div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
-import SliderBar from "./components/SliderBar";
+import PricingCard from "./components/PricingCard.vue";
 
 export default {
 	name: "App",
 	components: {
-		SliderBar,
 		AppHeader,
+		PricingCard,
 	},
 };
 </script>

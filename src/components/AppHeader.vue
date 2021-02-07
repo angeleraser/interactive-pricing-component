@@ -1,8 +1,6 @@
 <template>
 	<header class="header">
-		<div class="bg-pattern-wrapper">
-			<img src="../assets/svg/bg-pattern.svg" alt="" class="bg-pattern" />
-		</div>
+		<div class="bg-pattern-wrapper"></div>
 
 		<div class="text">
 			<h1>
@@ -49,6 +47,9 @@ export default {
 	position: absolute;
 	top: 0;
 	width: 100%;
+	height: 450px;
+	border-bottom-left-radius: 200px;
+	background-color: var(--bg-pattern);
 	z-index: -1;
 }
 
