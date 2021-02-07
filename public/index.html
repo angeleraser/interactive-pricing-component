@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html id="html" prefix="og: https://ogp.me/ns#" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+		<title>Interactive Pricing Component</title>
+		<meta
+			name="description"
+			content="A challenge to build out this interactive pricing component and get it looking as close to the design as possible."
+		/>
+		<meta property="og:site_name" content="Interactive Pricing Component" />
+		<meta
+			property="og:description"
+			content="A challenge to build out this interactive pricing component and get it looking as close to the design as possible."
+		/>
+		<meta property="og:title" content="Interactive Pricing Component" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://interactive-pricing-component.angeleraser.vercel.app" />
+		<meta
+			property="og:image"
+			content="https://res.cloudinary.com/dixrgy8ki/image/upload/v1612668601/portfolio/projects/interactive-pricing-component.png"
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@angeleraser" />
+		<meta name="twitter:title" content="Interactive Pricing Component" />
+		<meta
+			name="twitter:description"
+			content="A challenge to build out this interactive pricing component and get it looking as close to the design as possible."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://res.cloudinary.com/dixrgy8ki/image/upload/v1612668601/portfolio/projects/interactive-pricing-component.png"
+		/>
+		<meta name="twitter:image:alt" content="Interactive Pricing Component" />
+	</head>
+	<body>
+		<noscript>
+			<strong
+				>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+				enable it to continue.</strong
+			>
+		</noscript>
+		<div id="app"></div>
+		<!-- built files will be auto injected -->
+	</body>
 </html>
