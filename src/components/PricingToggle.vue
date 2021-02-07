@@ -12,6 +12,9 @@ export default {
 			type: String,
 			default: "",
 		},
+		toggleDiscount: {
+			type: Function,
+		},
 	},
 	data() {
 		return {
@@ -20,6 +23,7 @@ export default {
 	},
 	methods: {
 		toggle() {
+			this.$props.toggleDiscount();
 			this.isActive = !this.isActive;
 		},
 	},
@@ -55,10 +59,10 @@ export default {
 }
 
 .pricing-toggle-button.enabled .pricing-button-ripple {
-	transform: translate(20px, 0);
+	transform: translate(20px, 0.5px);
 }
 
 .pricing-toggle-button.disabled .pricing-button-ripple {
-	transform: translate(0, 0);
+	transform: translate(0, 0.5px);
 }
 </style>

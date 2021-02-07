@@ -4,11 +4,11 @@
 
 		<span :style="getFillWidth" class="slider-fill bar"></span>
 
-		<input v-model="inputValue" v-on:change="calculatePricing" type="range" :max="maxValue" :min="minValue" />
+		<input v-model="inputValue" type="range" :step="step" :max="maxValue" :min="minValue" />
 
-		<button v-bind:style="getControlPosition" class="slider-control">
+		<button :style="getControlPosition" class="slider-control">
 			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="13">
-				<g fill="#80FFF3" fill-rule="evenodd">
+				<g fill="#10FFF3" fill-rule="evenodd">
 					<path
 						d="M16 2.558v7.884a1 1 0 001.735.679l3.639-3.943a1 1 0 000-1.356l-3.64-3.943A1 1 0 0016 2.558zM6 2.558v7.884a1 1 0 01-1.735.679L.626 7.178a1 1 0 010-1.356l3.64-3.943A1 1 0 016 2.558z"
 					/>
@@ -23,7 +23,6 @@ export default {
 	name: "SliderBar",
 	props: {
 		value: {
-			type: Number,
 			default: 0,
 		},
 		maxValue: {
@@ -34,9 +33,17 @@ export default {
 			type: Number,
 			default: 0,
 		},
+		step: {
+			type: Number,
+			default: 1,
+		},
 		classNames: {
 			type: String,
 			default: "",
+		},
+		onPlanChange: {
+			type: Function,
+			required: true,
 		},
 	},
 	data() {
@@ -45,7 +52,6 @@ export default {
 		};
 	},
 	methods: {
-		calculatePricing() {},
 		calcPercentageFor(ruleName) {
 			const currentPosition = this.inputValue;
 
@@ -55,9 +61,13 @@ export default {
 
 			return `${ruleName}:${calculatedPosition}%`;
 		},
+		selectPlanIndex() {
+			this.$props.onPlanChange(this.inputValue);
+		},
 	},
 	computed: {
 		getControlPosition() {
+			this.selectPlanIndex();
 			return this.calcPercentageFor("left");
 		},
 		getFillWidth() {

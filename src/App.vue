@@ -1,19 +1,25 @@
 <template>
 	<div id="app">
 		<app-header />
-		<pricing-card />
+		<pricing-card :plans="plans" />
 	</div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import PricingCard from "./components/PricingCard.vue";
+import { plans } from "./fixtures/plans";
 
 export default {
 	name: "App",
 	components: {
 		AppHeader,
 		PricingCard,
+	},
+	data() {
+		return {
+			plans: plans,
+		};
 	},
 };
 </script>

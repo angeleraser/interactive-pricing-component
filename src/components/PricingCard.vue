@@ -2,14 +2,21 @@
 	<article class="pricing-card">
 		<section class="pricing-card__pricing">
 			<!-- Page views count -->
-			<div class="pricing-card__page-views-count">{{ `100K` }} Pageviews</div>
+			<div class="pricing-card__page-views-count">{{ getPageViews }} Pageviews</div>
 
 			<!-- Slider input range  -->
-			<slider-bar :classNames="`input-range`" />
+			<slider-bar
+				:classNames="`input-range`"
+				:onPlanChange="onPlanChange"
+				:value="planIndex"
+				:minValue="0"
+				:maxValue="plans.length - 1"
+				:step="1"
+			/>
 
 			<!-- Pricing -->
 			<div class="pricing-card__calculated-price">
-				<span class="pricing">$16.00</span>
+				<span class="pricing">{{ getPlanPricing }}</span>
 				<span class="based">/ month</span>
 			</div>
 
@@ -17,7 +24,7 @@
 			<div class="pricing-card__toggle-based-time">
 				<p class="pricing-card__toggle-based-time__time">Monthly Billing</p>
 
-				<pricing-toggle />
+				<pricing-toggle :toggleDiscount="toggleDiscount" />
 
 				<p class="pricing-card__toggle-based-time__time">
 					Yearly Billing
@@ -40,10 +47,49 @@
 
 <script>
 import PricingToggle from "./PricingToggle.vue";
+
 import SliderBar from "./SliderBar.vue";
 export default {
 	components: { SliderBar, PricingToggle },
 	name: "PricingCard",
+	props: {
+		plans: {
+			type: Array,
+			default: () => {
+				return [];
+			},
+		},
+	},
+	data() {
+		return {
+			planIndex: 0,
+			hasDiscount: false,
+			selectedPlan: this.$props.plans[0],
+		};
+	},
+	methods: {
+		onPlanChange(value) {
+			this.planIndex = value;
+			this.selectedPlan = this.$props.plans[value];
+		},
+		toggleDiscount() {
+			this.hasDiscount = !this.hasDiscount;
+		},
+	},
+	computed: {
+		getPageViews() {
+			const pageViews = this.selectedPlan.pageViews;
+
+			return pageViews;
+		},
+		getPlanPricing() {
+			let price = this.selectedPlan.price;
+			if (this.hasDiscount) {
+				price = price - price * 0.25;
+			}
+			return `$${price.toFixed(2)}`;
+		},
+	},
 };
 </script>
 
